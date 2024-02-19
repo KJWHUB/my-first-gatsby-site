@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Link } from "gatsby";
-import { container, heading, navLinks, navLinkItem, navLinkText } from "./layout.module.css";
+import { Link, useStaticQuery, graphql } from "gatsby";
+import { container, heading, navLinks, navLinkItem, navLinkText, siteTitle } from "./layout.module.css";
 
 interface Props {
   pageTitle: string;
@@ -8,8 +8,21 @@ interface Props {
 }
 
 const Layout: React.FC<Props> = ({ pageTitle, children }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
+
+  console.log("data", data);
+
   return (
     <div className={container}>
+      <header className={siteTitle}>{data.site.siteMetadata.title}</header>
       <nav>
         <ul className={navLinks}>
           <li className={navLinkItem}>
