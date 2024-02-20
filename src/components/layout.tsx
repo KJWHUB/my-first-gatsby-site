@@ -18,8 +18,6 @@ const Layout: React.FC<Props> = ({ pageTitle, children }) => {
     }
   `);
 
-  console.log("data", data);
-
   return (
     <div className={container}>
       <header className={siteTitle}>{data.site.siteMetadata.title}</header>
@@ -33,6 +31,11 @@ const Layout: React.FC<Props> = ({ pageTitle, children }) => {
           <li className={navLinkItem}>
             <Link to="/about" className={navLinkText}>
               About
+            </Link>
+          </li>
+          <li className={navLinkItem}>
+            <Link to="/blog" className={navLinkText}>
+              Blog
             </Link>
           </li>
         </ul>
